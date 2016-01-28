@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: healthy
+spec:
+  replicas: 1
+  selector:
+    name: healthy
+  template:
+    metadata:
+      labels:
+        name: healthy
+        app: lbtest
+    spec:
+      containers:
+      - name: nginx
+        image: tback/lbtest:healthy
+        ports:
+        - containerPort: 80
